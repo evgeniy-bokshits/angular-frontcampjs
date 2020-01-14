@@ -8,16 +8,14 @@ import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatBu
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FooterComponent } from './footer/footer.component';
-import { MainComponent } from './main/main.component';
-import { ErrorComponent } from './error/error.component';
+import { MainLayoutComponent } from './main-layout/main-layout.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    MainComponent,
-    ErrorComponent,
+    MainLayoutComponent
   ],
   imports: [
     CommonModule,
@@ -34,8 +32,7 @@ import { ErrorComponent } from './error/error.component';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    MainComponent,
-    ErrorComponent
+    MainLayoutComponent
   ],
   providers: [],
 })

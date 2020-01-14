@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
-import { SidebarService } from 'src/app/services/sidebar/sidebar.service';
+import { SidebarService } from 'src/app/components/sidebar/sidebar.service';
 
 @Component({
   selector: 'app-sidebar',

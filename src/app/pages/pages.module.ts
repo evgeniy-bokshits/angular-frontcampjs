@@ -5,13 +5,13 @@ import { ComponentsModule } from '../components/components.module';
 
 import { MainPageComponent } from './main-page/main-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
-import { NotFoundedPageComponent } from './not-founded-page/not-founded-page.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
     MainPageComponent,
     ContactPageComponent,
-    NotFoundedPageComponent
+    NotFoundPageComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +20,7 @@ import { NotFoundedPageComponent } from './not-founded-page/not-founded-page.com
   exports: [
     MainPageComponent,
     ContactPageComponent,
-    NotFoundedPageComponent
+    NotFoundPageComponent
   ],
   providers: [],
 })
