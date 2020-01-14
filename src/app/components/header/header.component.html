@@ -1,0 +1,16 @@
+  <mat-toolbar color="primary" class="sidebar-toolbar">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon (click)="toggleRightSidenav()">menu</mat-icon>
+      </button>
+      <h1>Angular FrontCampJS</h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/main'"> Main </a>
+        <a mat-button [routerLink]="'/contact'"> Contact </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+
