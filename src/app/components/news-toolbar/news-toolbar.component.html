@@ -1,0 +1,30 @@
+<mat-toolbar color="white">
+  <mat-toolbar-row>
+    <span>{{sourceNameVal}}</span>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <div class="toolbar-container">
+      <mat-form-field class="toolbar-item">
+        <mat-label>News Source Name</mat-label>
+        <mat-select (selectionChange)="onNewsSourChange($event)">
+          <mat-option *ngFor="let news of newsSources" [(value)]="news.value">
+            {{news.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="toolbar-item">
+        <input matInput type="text" placeholder="Type your text for filter news" [(ngModel)]="textForFilter">
+        <button mat-button *ngIf="textForFilter" matSuffix mat-icon-button aria-label="Clear" (click)="textForFilter=''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-checkbox class="toolbar-item" [(ngModel)]="checked">Only created my me</mat-checkbox>
+
+      <button class="toolbar-item" mat-stroked-button color="accent">Add Article</button>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+<app-news-content [articles]="articles"></app-news-content>

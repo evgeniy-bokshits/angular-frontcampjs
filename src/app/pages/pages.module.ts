@@ -6,6 +6,7 @@ import { ComponentsModule } from '../components/components.module';
 import { MainPageComponent } from './main-page/main-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { NewsToolbarComponent } from '../components/news-toolbar/news-toolbar.component';
 
 @NgModule({
   declarations: [
