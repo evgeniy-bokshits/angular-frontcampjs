@@ -12,7 +12,8 @@ import {
   MatFormFieldModule,
   MatSelectModule,
   MatInputModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatCardModule
 } from '@angular/material';
 
 import { HeaderComponent } from './header/header.component';
@@ -45,7 +46,8 @@ import { NewsContentComponent } from './news-content/news-content.component';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatCardModule,
   ],
   exports: [
     HeaderComponent,
