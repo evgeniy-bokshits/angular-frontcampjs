@@ -19,21 +19,33 @@
       </a>
     </div>
 </div> -->
-<div class="news-card-container">
-  <mat-card class="news-card" *ngFor="let article of articles">
-    <div class="image">
-      <img mat-card-image src="{{article.imgUrl}}">
-    </div>
-    <div class="content">
-      <mat-card-title >
-        {{article.title}}
-      </mat-card-title>
-      <mat-card-content>
-      </mat-card-content>
-    </div>
-    <div class="actions">
+<div class="main-list">
+    <div class="news-card-container">
+        <mat-card class="news-card" *ngFor="let article of articles">
+          <div class="image">
+            <a class="img img-2" [style.background-image]="'url('+article.imgUrl+')'"></a>
+          </div>
+          <div class="content">
+            <mat-card-title >
+              {{article.title}}
+            </mat-card-title>
+            <mat-card-content>
+              {{article.description}}
+            </mat-card-content>
+            <mat-card-actions>
 
-    </div>
-  </mat-card>
+            </mat-card-actions>
+            <a href="{{article.url}}">
+                "Read More"
+                <span class="ion-ios-arrow-forward"></span>
+              </a>
+          </div>
+          <div class="actions">
+              <button class="toolbar-item" mat-stroked-button color="accent">Edit</button>
+              <button class="toolbar-item" mat-stroked-button color="accent">Delete</button>
+          </div>
+        </mat-card>
+      </div>
 </div>
+
 
