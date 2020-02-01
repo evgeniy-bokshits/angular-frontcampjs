@@ -1,0 +1,10 @@
+.toolbar-container {
+  display: inline-flex;
+  align-items: baseline;
+  width: 80%;
+  margin: 0 auto;
+  .toolbar-item {
+    margin: 30px auto 30px 30px;
+    width: 100%;
+  }
+}

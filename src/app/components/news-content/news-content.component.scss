@@ -1,0 +1,8 @@
+.main-list {
+  width: 70%;
+  margin: 0 auto;
+  .news-card-container {
+    display: flex ;
+    flex-flow: column;
+}
+}
