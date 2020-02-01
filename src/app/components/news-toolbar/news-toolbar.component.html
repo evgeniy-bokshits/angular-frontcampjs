@@ -21,10 +21,10 @@
       </mat-form-field>
 
       <mat-checkbox class="toolbar-item" [(ngModel)]="checked">Only created my me</mat-checkbox>
-
-      <button class="toolbar-item" mat-stroked-button color="accent">Add Article</button>
+  <button class="toolbar-item" mat-stroked-button color="accent" routerLink="/main/addarticle">Add Article</button>
     </div>
 
   </mat-toolbar-row>
 </mat-toolbar>
 <app-news-content [articles]="articles"></app-news-content>
+<router-outlet></router-outlet>

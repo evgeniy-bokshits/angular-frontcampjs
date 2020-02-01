@@ -22,6 +22,9 @@ import { FooterComponent } from './footer/footer.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { NewsToolbarComponent } from './news-toolbar/news-toolbar.component';
 import { NewsContentComponent } from './news-content/news-content.component';
+import { NewsArticleComponent } from './news-article/news-article.component';
+import { NewsArticleAddComponent } from './news-article-add/news-article-add.component';
+import { NewsArticleEditComponent } from './news-article-edit/news-article-edit.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { NewsContentComponent } from './news-content/news-content.component';
     FooterComponent,
     MainLayoutComponent,
     NewsToolbarComponent,
-    NewsContentComponent
+    NewsContentComponent,
+    NewsArticleComponent,
+    NewsArticleAddComponent,
+    NewsArticleEditComponent
   ],
   imports: [
     CommonModule,
