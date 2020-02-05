@@ -8,6 +8,8 @@ import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarService } from './components/sidebar/sidebar.service';
+import { ConfigurationService } from './core/configuration/configuration.service';
+import {NewsApiService} from './core/services/news-api/news-api.services';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,7 @@ import { SidebarService } from './components/sidebar/sidebar.service';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [SidebarService],
+  providers: [SidebarService, NewsApiService, ConfigurationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

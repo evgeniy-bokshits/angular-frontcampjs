@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Input } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
+import { NewsApiService } from 'src/app/core/services/news-api/news-api.services';
 
 export interface NewsSource {
   value: string;
@@ -12,64 +13,43 @@ export interface NewsArticle {
   publishAt: string;
   author: string;
   description: string;
-  imgUrl: string;
+  urlToImage: string;
+  content: string;
 }
 
 @Component({
   selector: 'app-news-toolbar',
   templateUrl: './news-toolbar.component.html',
-  styleUrls: ['./news-toolbar.component.scss']
+  styleUrls: ['./news-toolbar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class NewsToolbarComponent implements OnInit {
-  selected = '';
+  selected = 'ru';
   textForFilter = 'Clear me';
   sourceNameVal = 'Source Name - ' + this.selected;
   checked = false;
 
   newsSources: NewsSource[] = [
-    {value: 'ru', viewValue: 'Russian'},
-    {value: 'us', viewValue: 'USA'},
-    {value: 'ua', viewValue: 'Ukraine'}
+    { value: 'ru', viewValue: 'Russian' },
+    { value: 'us', viewValue: 'USA' },
+    { value: 'ua', viewValue: 'Ukraine' }
   ];
 
-  articles: NewsArticle[] = [
-    {title: 'Мать брошенных в Шереметьево детей рассказала об издевательствах мужа - РИА НОВОСТИ',
-     url: 'https://ria.ru/20200128/1563948365.html',
-     publishAt: '2020-01-27T22:23:21Z',
-     author: 'me',
-     // tslint:disable-next-line:max-line-length
-     description: 'Мать двух мальчиков, которых отец оставил с запиской в аэропорту Шереметьево, рассказала телеканалу "360" о ситуации в семье. РИА Новости, 28.01.2020',
-     imgUrl: 'https://cdn25.img.ria.ru/images/sharing/article/1563948365.jpg?15635296521580168159'},
-     {title: 'Мать брошенных в Шереметьево детей рассказала об издевательствах мужа - РИА НОВОСТИ',
-     url: 'https://ria.ru/20200128/1563948365.html',
-     publishAt: '2020-01-27T22:23:21Z',
-     author: '', description: '',
-     imgUrl: 'https://cdn25.img.ria.ru/images/sharing/article/1563948365.jpg?15635296521580168159'},
-     {title: 'Мать брошенных в Шереметьево детей рассказала об издевательствах мужа - РИА НОВОСТИ',
-     url: 'https://ria.ru/20200128/1563948365.html',
-     publishAt: '2020-01-27T22:23:21Z',
-     author: '', description: '',
-     imgUrl: 'https://cdn25.img.ria.ru/images/sharing/article/1563948365.jpg?15635296521580168159'},
-     {title: 'Мать брошенных в Шереметьево детей рассказала об издевательствах мужа - РИА НОВОСТИ',
-     url: 'https://ria.ru/20200128/1563948365.html',
-     publishAt: '2020-01-27T22:23:21Z',
-     author: '', description: '',
-     imgUrl: 'https://cdn25.img.ria.ru/images/sharing/article/1563948365.jpg?15635296521580168159'},
-     {title: 'Мать брошенных в Шереметьево детей рассказала об издевательствах мужа - РИА НОВОСТИ',
-     url: 'https://ria.ru/20200128/1563948365.html',
-     publishAt: '2020-01-27T22:23:21Z',
-     author: '', description: '',
-     imgUrl: 'https://cdn25.img.ria.ru/images/sharing/article/1563948365.jpg?15635296521580168159'}
-  ];
+  @Input() articles: NewsArticle[] = [];
 
-
-  constructor() { }
+  constructor(private newsApiService: NewsApiService, private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
+    this.newsApiService.getTopNewsForCountry(this.selected).then(articles => {
+    this.articles = articles.articles;
+    this.ref.markForCheck();
+    });
   }
 
   onNewsSourChange(val) {
     this.sourceNameVal = 'Source Name - ' + val.value;
+    this.newsApiService.getTopNewsForCountry(val.value).then(articles => this.articles = articles.articles);
   }
 
 }

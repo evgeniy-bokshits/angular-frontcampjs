@@ -6,7 +6,7 @@
     <div class="toolbar-container">
       <mat-form-field class="toolbar-item">
         <mat-label>News Source Name</mat-label>
-        <mat-select (selectionChange)="onNewsSourChange($event)">
+        <mat-select (selectionChange)="onNewsSourChange($event)" [(value)]="selected">
           <mat-option *ngFor="let news of newsSources" [(value)]="news.value">
             {{news.viewValue}}
           </mat-option>
