@@ -9,6 +9,8 @@ import { NewsArticle } from '../news-toolbar/news-toolbar.component';
 })
 export class NewsArticleAddComponent implements OnInit {
   @Input() articles: NewsArticle[];
+  @Input() articleToEdit: NewsArticle;
+  @Input() isEdit: boolean;
   @Output() articlesValueChange = new EventEmitter();
   @Output() isAddArticleValueChange = new EventEmitter();
   addArticleReactiveForm: FormGroup;
@@ -46,17 +48,17 @@ export class NewsArticleAddComponent implements OnInit {
 
   private initForm() {
     this.addArticleReactiveForm = this.fb.group({
-      title: ['', [
+      title: [this.isEdit ? this.articleToEdit.title : '', [
         Validators.required,
         Validators.pattern(/[A-z]/)
       ]
       ],
-      url: [''],
-      publishAt: [''],
-      author: [''],
-      description: [''],
-      urlToImage: [''],
-      content: ['']
+      url: [this.isEdit ? this.articleToEdit.url : ''],
+      publishAt: [this.isEdit ? this.articleToEdit.publishAt : ''],
+      author: [this.isEdit ? this.articleToEdit.author : ''],
+      description: [this.isEdit ? this.articleToEdit.description : ''],
+      urlToImage: [this.isEdit ? this.articleToEdit.urlToImage : ''],
+      content: [this.isEdit ? this.articleToEdit.content : '']
     });
   }
 }

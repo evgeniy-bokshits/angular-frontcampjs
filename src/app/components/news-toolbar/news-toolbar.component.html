@@ -1,8 +1,8 @@
-<mat-toolbar color="white">
+<mat-toolbar color="white" *ngIf="isShowToolbar()">
   <mat-toolbar-row>
     <span>{{sourceNameVal}}</span>
   </mat-toolbar-row>
-  <mat-toolbar-row>
+  <mat-toolbar-row >
     <div class="toolbar-container">
       <mat-form-field class="toolbar-item">
         <mat-label>News Source Name</mat-label>
@@ -26,6 +26,6 @@
 
   </mat-toolbar-row>
 </mat-toolbar>
-<app-news-article-add [articles]="articles" *ngIf="isAddArticle" (articlesValueChange)="onAddArticleForm($event)"></app-news-article-add>
-<app-news-content [articles]="articles" (deleteItem)="updateArticles($event)"></app-news-content>
+<app-news-article-add [articles]="articles" [isEdit]="isEditArticle" *ngIf="isAddArticle || isEditArticle" (articlesValueChange)="onAddArticleForm($event)" [articleToEdit]="articleToEdit"></app-news-article-add>
+<app-news-content *ngIf="isShowContent()" [articles]="articles" (deleteItem)="updateArticles($event)" (editItem)="editArticle($event)"></app-news-content>
 <router-outlet></router-outlet>

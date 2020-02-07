@@ -22,7 +22,7 @@
 <div class="main-list">
     <div class="news-card-container" *ngFor="let article of articles">
 
-            <app-news-article [article]="article"></app-news-article>
+            <app-news-article [article]="article" (deleteItem)="onDeleteItem($event)" (editItem)="onEditItem($event)"></app-news-article>
       </div>
 </div>
 

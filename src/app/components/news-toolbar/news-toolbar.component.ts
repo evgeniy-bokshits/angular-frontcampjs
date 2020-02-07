@@ -30,6 +30,8 @@ export class NewsToolbarComponent implements OnInit {
   sourceNameVal = 'Source Name - ' + this.selected;
   checked = false;
   isAddArticle = false;
+  isEditArticle = false;
+  articleToEdit: any;
 
   newsSources: NewsSource[] = [
     { value: 'ru', viewValue: 'Russian' },
@@ -60,9 +62,23 @@ export class NewsToolbarComponent implements OnInit {
   onAddArticleForm(p) {
     this.articles.splice(0, 0, p);
     this.isAddArticle = false;
+    this.isEditArticle = false;
     this.ref.markForCheck();
   }
   updateArticles(p) {
     this.ref.markForCheck();
+  }
+
+  editArticle(articleToEdit) {
+    this.isEditArticle = true;
+    this.articleToEdit = articleToEdit;
+    this.ref.markForCheck();
+  }
+  isShowContent() {
+    return !(this.isAddArticle || this.isEditArticle);
+  }
+
+  isShowToolbar() {
+    return !(this.isAddArticle || this.isEditArticle);
   }
 }

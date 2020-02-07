@@ -8,7 +8,7 @@ import { NewsArticle } from '../news-toolbar/news-toolbar.component';
 })
 export class NewsContentComponent implements OnInit, OnChanges {
   @Input() articles: Array<NewsArticle>;
-  @Output() deleteItem = new EventEmitter();
+  @Output() editItem = new EventEmitter();
 
   constructor(private ref: ChangeDetectorRef) { }
 
@@ -30,6 +30,15 @@ export class NewsContentComponent implements OnInit, OnChanges {
     if (index > -1) {
       this.articles.splice(index, 1);
     }
+    this.ref.markForCheck();
+  }
+
+  onEditItem(articleToEdit) {
+    const index = this.articles.indexOf(articleToEdit, 0);
+    if (index > -1) {
+      this.articles.splice(index, 1);
+    }
+    this.editItem.emit(articleToEdit);
     this.ref.markForCheck();
   }
 
