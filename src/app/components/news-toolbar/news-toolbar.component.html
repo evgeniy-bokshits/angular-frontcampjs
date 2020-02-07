@@ -20,12 +20,12 @@
         </button>
       </mat-form-field>
 
-      <mat-checkbox class="toolbar-item" [(ngModel)]="checked">Only created my me</mat-checkbox>
+      <mat-checkbox class="toolbar-item" [value]="checked" (change)="filterByAuthor()">Only created my me</mat-checkbox>
   <button class="toolbar-item" mat-stroked-button color="accent" (click)="onAddArticle()">Add Article</button>
     </div>
 
   </mat-toolbar-row>
 </mat-toolbar>
 <app-news-article-add [articles]="articles" [isEdit]="isEditArticle" *ngIf="isAddArticle || isEditArticle" (articlesValueChange)="onAddArticleForm($event)" [articleToEdit]="articleToEdit"></app-news-article-add>
-<app-news-content *ngIf="isShowContent()" [articles]="articles" (deleteItem)="updateArticles($event)" (editItem)="editArticle($event)"></app-news-content>
+<app-news-content *ngIf="isShowContent()" [articles]="articles" (deleteItem)="updateArticles($event)" (editItem)="editArticle($event)" [searchFilter]="textForFilter" [filterByAuthor]="checked"></app-news-content>
 <router-outlet></router-outlet>

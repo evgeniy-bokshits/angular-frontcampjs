@@ -26,7 +26,7 @@ export interface NewsArticle {
 
 export class NewsToolbarComponent implements OnInit {
   selected = 'ru';
-  textForFilter = 'Clear me';
+  textForFilter = '';
   sourceNameVal = 'Source Name - ' + this.selected;
   checked = false;
   isAddArticle = false;
@@ -80,5 +80,10 @@ export class NewsToolbarComponent implements OnInit {
 
   isShowToolbar() {
     return !(this.isAddArticle || this.isEditArticle);
+  }
+
+  filterByAuthor() {
+    this.checked = !this.checked;
+    this.ref.markForCheck();
   }
 }

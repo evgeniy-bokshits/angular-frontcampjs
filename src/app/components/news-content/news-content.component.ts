@@ -8,6 +8,8 @@ import { NewsArticle } from '../news-toolbar/news-toolbar.component';
 })
 export class NewsContentComponent implements OnInit, OnChanges {
   @Input() articles: Array<NewsArticle>;
+  @Input() searchFilter: string;
+  @Input() filterByAuthor: boolean;
   @Output() editItem = new EventEmitter();
 
   constructor(private ref: ChangeDetectorRef) { }

@@ -28,6 +28,8 @@ import { NewsArticleComponent } from './news-article/news-article.component';
 import { NewsArticleAddComponent } from './news-article-add/news-article-add.component';
 import { NewsArticleEditComponent } from './news-article-edit/news-article-edit.component';
 import { NewsApiService } from '../core/services/news-api/news-api.services';
+import { SearchPipe } from './news-toolbar/search.pipe';
+import { CreatedByMePipe } from './news-toolbar/created-by-me.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { NewsApiService } from '../core/services/news-api/news-api.services';
     NewsContentComponent,
     NewsArticleComponent,
     NewsArticleAddComponent,
-    NewsArticleEditComponent
+    NewsArticleEditComponent,
+    SearchPipe,
+    CreatedByMePipe
   ],
   imports: [
     CommonModule,
