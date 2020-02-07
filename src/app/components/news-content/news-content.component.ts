@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges, EventEmitter, Output, ChangeDetectorRef } from '@angular/core';
 import { NewsArticle } from '../news-toolbar/news-toolbar.component';
 
 @Component({
@@ -8,8 +8,9 @@ import { NewsArticle } from '../news-toolbar/news-toolbar.component';
 })
 export class NewsContentComponent implements OnInit, OnChanges {
   @Input() articles: Array<NewsArticle>;
+  @Output() deleteItem = new EventEmitter();
 
-  constructor() { }
+  constructor(private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,14 @@ export class NewsContentComponent implements OnInit, OnChanges {
         this.articles = changes[propName].currentValue;
       }
     }
+  }
+
+  onDeleteItem(articleToDelete) {
+    const index = this.articles.indexOf(articleToDelete, 0);
+    if (index > -1) {
+      this.articles.splice(index, 1);
+    }
+    this.ref.markForCheck();
   }
 
 }

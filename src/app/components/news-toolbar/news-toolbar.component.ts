@@ -29,6 +29,7 @@ export class NewsToolbarComponent implements OnInit {
   textForFilter = 'Clear me';
   sourceNameVal = 'Source Name - ' + this.selected;
   checked = false;
+  isAddArticle = false;
 
   newsSources: NewsSource[] = [
     { value: 'ru', viewValue: 'Russian' },
@@ -42,9 +43,13 @@ export class NewsToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.newsApiService.getTopNewsForCountry(this.selected).then(articles => {
-    this.articles = articles.articles;
-    this.ref.markForCheck();
+      this.articles = articles.articles;
+      this.ref.markForCheck();
     });
+  }
+
+  onAddArticle() {
+    this.isAddArticle = true;
   }
 
   onNewsSourChange(val) {
@@ -52,4 +57,12 @@ export class NewsToolbarComponent implements OnInit {
     this.newsApiService.getTopNewsForCountry(val.value).then(articles => this.articles = articles.articles);
   }
 
+  onAddArticleForm(p) {
+    this.articles.splice(0, 0, p);
+    this.isAddArticle = false;
+    this.ref.markForCheck();
+  }
+  updateArticles(p) {
+    this.ref.markForCheck();
+  }
 }

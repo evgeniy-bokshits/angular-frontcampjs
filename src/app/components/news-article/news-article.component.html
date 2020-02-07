@@ -19,6 +19,6 @@
   </div>
   <div class="actions" *ngIf='isAuthorMe()'>
     <button class="toolbar-item" mat-stroked-button color="accent">Edit</button>
-    <button class="toolbar-item" mat-stroked-button color="accent">Delete</button>
+    <button class="toolbar-item" mat-stroked-button color="accent" (click)="onDeleteItem()">Delete</button>
   </div>
 </mat-card>

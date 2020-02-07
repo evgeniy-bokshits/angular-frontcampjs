@@ -13,7 +13,9 @@ import {
   MatSelectModule,
   MatInputModule,
   MatCheckboxModule,
-  MatCardModule
+  MatCardModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from '@angular/material';
 
 import { HeaderComponent } from './header/header.component';
@@ -55,6 +57,8 @@ import { NewsApiService } from '../core/services/news-api/news-api.services';
     MatInputModule,
     MatCheckboxModule,
     MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   exports: [
     HeaderComponent,
