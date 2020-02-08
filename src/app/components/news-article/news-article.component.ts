@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { NewsArticle } from '../news-toolbar/news-toolbar.component';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-news-article',
@@ -8,6 +9,8 @@ import { NewsArticle } from '../news-toolbar/news-toolbar.component';
 })
 export class NewsArticleComponent implements OnInit {
   @Input() article: NewsArticle;
+  @Output() deleteItem = new EventEmitter();
+  @Output() editItem = new EventEmitter();
 
   constructor() { }
 
@@ -16,6 +19,16 @@ export class NewsArticleComponent implements OnInit {
 
   isAuthorMe(): boolean {
     return this.article.author === 'me';
+}
+
+onDeleteItem() {
+  const val: any = this.article;
+  this.deleteItem.emit(val);
+}
+
+onEditItem() {
+  const val: any = this.article;
+  this.editItem.emit(val);
 }
 
 }

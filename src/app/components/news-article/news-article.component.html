@@ -1,10 +1,10 @@
 <mat-card class="news-card">
   <div class="image">
-    <a class="img img-2" [style.background-image]="'url('+article.imgUrl+')'"></a>
+    <a class="img img-2" [style.background-image]="'url('+article.urlToImage+')'"></a>
   </div>
   <div class="content">
     <mat-card-title>
-      {{article.title}}
+      {{article.title | uppercase}}
     </mat-card-title>
     <mat-card-content>
       {{article.description}}
@@ -18,7 +18,7 @@
     </a>
   </div>
   <div class="actions" *ngIf='isAuthorMe()'>
-    <button class="toolbar-item" mat-stroked-button color="accent">Edit</button>
-    <button class="toolbar-item" mat-stroked-button color="accent">Delete</button>
+    <button class="toolbar-item" mat-stroked-button color="accent" (click)="onEditItem()" >Edit</button>
+    <button class="toolbar-item" mat-stroked-button color="accent" (click)="onDeleteItem()">Delete</button>
   </div>
 </mat-card>

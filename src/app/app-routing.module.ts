@@ -8,7 +8,6 @@ import { NewsArticleAddComponent } from './components/news-article-add/news-arti
 
 const routes: Routes = [
   { path: 'main', component: MainPageComponent, data: { type: 'main' } },
-  { path: 'main/addarticle', component: NewsArticleAddComponent, data: { type: 'main' } },
   { path: 'contact', component: ContactPageComponent, data: { type: 'contact' } },
   { path: '404', component: NotFoundPageComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },

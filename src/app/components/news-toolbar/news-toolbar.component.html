@@ -1,12 +1,12 @@
-<mat-toolbar color="white">
+<mat-toolbar color="white" *ngIf="isShowToolbar()">
   <mat-toolbar-row>
     <span>{{sourceNameVal}}</span>
   </mat-toolbar-row>
-  <mat-toolbar-row>
+  <mat-toolbar-row >
     <div class="toolbar-container">
       <mat-form-field class="toolbar-item">
         <mat-label>News Source Name</mat-label>
-        <mat-select (selectionChange)="onNewsSourChange($event)">
+        <mat-select (selectionChange)="onNewsSourChange($event)" [(value)]="selected">
           <mat-option *ngFor="let news of newsSources" [(value)]="news.value">
             {{news.viewValue}}
           </mat-option>
@@ -20,11 +20,12 @@
         </button>
       </mat-form-field>
 
-      <mat-checkbox class="toolbar-item" [(ngModel)]="checked">Only created my me</mat-checkbox>
-  <button class="toolbar-item" mat-stroked-button color="accent" routerLink="/main/addarticle">Add Article</button>
+      <mat-checkbox class="toolbar-item" [value]="checked" (change)="filterByAuthor()">Only created my me</mat-checkbox>
+  <button class="toolbar-item" mat-stroked-button color="accent" (click)="onAddArticle()">Add Article</button>
     </div>
 
   </mat-toolbar-row>
 </mat-toolbar>
-<app-news-content [articles]="articles"></app-news-content>
+<app-news-article-add [articles]="articles" [isEdit]="isEditArticle" *ngIf="isAddArticle || isEditArticle" (articlesValueChange)="onAddArticleForm($event)" [articleToEdit]="articleToEdit"></app-news-article-add>
+<app-news-content *ngIf="isShowContent()" [articles]="articles" (deleteItem)="updateArticles($event)" (editItem)="editArticle($event)" [searchFilter]="textForFilter" [filterByAuthor]="checked"></app-news-content>
 <router-outlet></router-outlet>
