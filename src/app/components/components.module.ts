@@ -27,9 +27,8 @@ import { NewsContentComponent } from './news-content/news-content.component';
 import { NewsArticleComponent } from './news-article/news-article.component';
 import { NewsArticleAddComponent } from './news-article-add/news-article-add.component';
 import { NewsArticleEditComponent } from './news-article-edit/news-article-edit.component';
-import { NewsApiService } from '../core/services/news-api/news-api.services';
-import { SearchPipe } from './news-toolbar/search.pipe';
-import { CreatedByMePipe } from './news-toolbar/created-by-me.pipe';
+import { SearchPipeModule } from './news-toolbar/search.pipe.module';
+import { CreatedByMePipeModule } from './news-toolbar/created-by-me.pipe.module';
 
 @NgModule({
   declarations: [
@@ -41,15 +40,15 @@ import { CreatedByMePipe } from './news-toolbar/created-by-me.pipe';
     NewsContentComponent,
     NewsArticleComponent,
     NewsArticleAddComponent,
-    NewsArticleEditComponent,
-    SearchPipe,
-    CreatedByMePipe
+    NewsArticleEditComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
     FormsModule,
+    SearchPipeModule.forRoot(),
+    CreatedByMePipeModule.forRoot(),
 
     MatToolbarModule,
     MatSidenavModule,
@@ -69,7 +68,11 @@ import { CreatedByMePipe } from './news-toolbar/created-by-me.pipe';
     SidebarComponent,
     FooterComponent,
     MainLayoutComponent,
-    NewsToolbarComponent
+    NewsToolbarComponent,
+    NewsContentComponent,
+    NewsArticleComponent,
+    NewsArticleAddComponent,
+    NewsArticleEditComponent
   ],
   providers: [],
 })
