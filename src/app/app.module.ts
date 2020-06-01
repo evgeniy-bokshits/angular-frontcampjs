@@ -10,14 +10,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarService } from './components/sidebar/sidebar.service';
 import { ConfigurationService } from './core/configuration/configuration.service';
 import { NewsApiService } from './core/services/news-api/news-api.services';
-import { SrcappcomponentsnewsToolbarsearchPipe } from './srcappcomponentsnews-toolbarsearch.pipe';
 import { createCustomElement } from '@angular/elements';
 import { NewsArticleComponent } from './components/news-article/news-article.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SrcappcomponentsnewsToolbarsearchPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,

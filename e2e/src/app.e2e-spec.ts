@@ -8,9 +8,14 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display tittle', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('angular-frontcampjs app is running!');
+    expect(page.getTitleText()).toEqual('Angular FrontCampJS');
+  });
+
+  it('should display source name', () => {
+    page.navigateTo();
+    expect(page.getSourceNameText()).toEqual('Source Name - ru');
   });
 
   afterEach(async () => {
